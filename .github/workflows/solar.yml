@@ -16,9 +16,11 @@ jobs:
         with:
           node-version: '20'
       - name: install dependencies
+        env:
+          MONGO_URI: "mongodb+srv://amu:${{ secrets.ATLAS_PASS }}@cluster0.gdmobq1.mongodb.net/planets?retryWrites=true&w=majority"
         run: |
          npm install
-         MONGO_URI: "mongodb+srv://amu:${{ secrets.ATLAS_PASS }}@cluster0.gdmobq1.mongodb.net/planets?retryWrites=true&w=majority"
+        
          echo "MONGO_URI=$MONGO_URI" >> $GITHUB_ENV
          echo "Using MongoDB cluster: $MONGO_URI"
 
