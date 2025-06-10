@@ -1,7 +1,10 @@
 name: solar
 on:
   workflow_dispatch:
-
+env:
+  MONGO_URI: "mongodb+srv://cluster0.gdmobq1.mongodb.net/"
+  MONGO_USERNAME: amu
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 jobs:
   build:
     runs-on: ubuntu-latest
