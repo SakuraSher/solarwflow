@@ -19,7 +19,8 @@ jobs:
       - name: install dependencies
         run: |
          npm install
-         console.log("Using Mongo URI:", process.env.MONGO_URI);
+         echo $MONGO_URI
+         
         
       - name: test
         run: npm test
