@@ -2,7 +2,6 @@ name: solar
 on:
   workflow_dispatch:
 env:
-  MONGO_URI: "mongodb+srv://amu:${{ secrets.ATLAS_PASS }}@cluster0.gdmobq1.mongodb.net/planets?retryWrites=true&w=majority"
   MONGO_USERNAME: amu
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
   ATLAS_API_KEY: ${{ secrets.ATLAS_TOKEN }}
@@ -19,6 +18,10 @@ jobs:
       - name: install dependencies
         run: |
          npm install
+         MONGO_URI: "mongodb+srv://amu:${{ secrets.ATLAS_PASS }}@cluster0.gdmobq1.mongodb.net/planets?retryWrites=true&w=majority"
+         echo "MONGO_URI=$MONGO_URI" >> $GITHUB_ENV
+         echo "Using MongoDB cluster: $MONGO_URI"
+
          
          
         
