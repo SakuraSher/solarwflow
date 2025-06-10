@@ -6,20 +6,25 @@ const mongoose = require('mongoose');
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-describe('Solar System API', () => {
+describe('Solar System API', function() {
+  this.timeout(10000); // Increase timeout for all tests
+
   before(async () => {
-    // Wait for connection if needed
+    // Skip if already connected
     if (mongoose.connection.readyState === 0) {
       await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
       });
     }
+    // Clear test database
+    await mongoose.connection.db.dropDatabase();
   });
 
   after(async () => {
     await mongoose.disconnect();
   });
+
 
   describe('GET /', () => {
     it('should serve index.html', (done) => {

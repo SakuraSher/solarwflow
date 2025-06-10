@@ -17,7 +17,7 @@ jobs:
           node-version: '20'
       - name: install dependencies
         env:
-          MONGO_URI: "mongodb+srv://amu:${{ secrets.ATLAS_PASS }}@cluster0.gdmobq1.mongodb.net/planets?retryWrites=true&w=majority"
+          MONGO_URI: "mongodb+srv://amu:${{ secrets.ATLAS_PASS }}@cluster0.gdmobq1.mongodb.net/planets?retryWrites=true&writeConcern=majority"
         run: |
          npm install
         

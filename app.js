@@ -28,7 +28,11 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   retryWrites: true,
-  w: 'majority'
+  writeConcern: {
+    w: 'majority',
+    j: true,
+    wtimeout: 5000
+  }
 })
 .then(() => console.log('MongoDB connected successfully'))
 .catch(err => {
