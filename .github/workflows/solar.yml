@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: '20'
       - name: install dependencies
-        run: npm install
+        run: |
+         npm install
+         console.log("Using Mongo URI:", process.env.MONGO_URI);
+        
       - name: test
         run: npm test
